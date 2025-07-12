@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "researchpaper-cli"
+version = "0.1.0"
+description = "CLI tool to fetch and summarize PubMed papers with optional LLM support (e.g., Ollama)"
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [
+    { include = "paperfetcher" }
+]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+requests = "^2.32.4"
+biopython = "^1.83"
+pandas = "^1.5.3"
+rich = "^14.0.0"
+
+# Optional LLM support (used only if --use-ollama is enabled)
+[tool.poetry.extras]
+llm = ["requests"]
+
+[tool.poetry.scripts]
+get-papers-list = "cli:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
